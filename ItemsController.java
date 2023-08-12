@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class ItemsController {
     List<Items> items =new ArrayList<Items>();
+    Items item;
+    int id, quantidade;
+    String nome;
+    Scanner num = new Scanner(System.in);
+    Scanner str = new Scanner(System.in);
+
 
     public void setItems(int id, String nome, int quantidade){
         items.add(new Items(id, nome, quantidade));
@@ -14,24 +20,22 @@ public class ItemsController {
         System.out.println("ID | Nome | Quantidade");
         System.out.println("------------------------");
         for (int i = 0; i<items.size();i++) {
-            Items item = items.get(i);
-            int id = item.getId();
-            String nome = item.getNome();
-            int quantidade = item.getQuantidade();
+            item = items.get(i);
+            id = item.getId();
+            nome = item.getNome();
+            quantidade = item.getQuantidade();
             System.out.println(id + " | " + nome + " | " + quantidade);
         }
         
     }
     public Items findById(int id){
-        Items item = items.get(id-1);
+        item = items.get(id-1);
         return item;
     }
 
 
     public void update(int id){
-        Items item = items.get(id-1);
-        Scanner num = new Scanner(System.in);
-        Scanner str = new Scanner(System.in);
+        item = findById(id);
         System.out.println("Qual campo deseja atualizar? ");
         System.out.println("[1] Nome;");
         System.out.println("[2] Quantidade; ");
@@ -39,18 +43,25 @@ public class ItemsController {
         switch (res) {
             case 1:
                 System.out.println("Qual o novo Nome do item? ");
-                String nome = str.nextLine();
+                nome = str.nextLine();
                 item.setNome(nome);
                 break;
             case 2:
                 System.out.println("Qual a nova Quantidade do item? ");
-                String quantidade = num.nextLine();
-                item.setNome(quantidade);
+                quantidade = num.nextInt();
+                item.setQuantidade(quantidade);
                 break;
             default:
                 break;
         }
         System.out.println("Item atualizado com sucesso!");
 
+    }
+
+    public void delete(int id){
+        item = findById(id);
+        items.remove(item);
+
+        System.out.println("Item deletado com sucesso!");
     }
 }
