@@ -1,13 +1,14 @@
 public class Items {
-
+    
     int id;
     String nome;
     int quantidade;
 
     public Items(int id, String nome, int quantidade){
-        this.id = id;
+        this.id = id;        
         this.nome = nome;
         this.quantidade = quantidade;    
+
     }
     
     public Items(){

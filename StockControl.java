@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -9,22 +10,20 @@ public class StockControl {
     static Scanner str = new Scanner(System.in);
     static int id, quantidade;
     static String res, nome;
+    static List<Items> items;
     static Items item;
     static boolean tf;
     public static void save(){
         
-        System.out.println("Qual o id do item a ser adicionado? ");
-        id = num.nextInt();
-    
         System.out.println("Qual o nome do item a ser adicionado? ");
         nome = str.nextLine();
 
         System.out.println("Qual a quantidade do item a ser adicionado? ");
         quantidade = num.nextInt();
-
-        System.out.println("Id: " + id + " Nome: " + nome + " Quantidade: " + quantidade);
     
-        itemsController.setItems(id, nome, quantidade);
+        itemsController.setItems(nome, quantidade);
+
+        itemsController.findAll();
 
         menu();
     };

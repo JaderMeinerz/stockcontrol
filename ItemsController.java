@@ -11,9 +11,12 @@ public class ItemsController {
     Scanner str = new Scanner(System.in);
 
 
-    public void setItems(int id, String nome, int quantidade){
+    public void setItems(String nome, int quantidade){
+        id = items.size() + 1;
+        nome= nome.substring(0, 1).toUpperCase()+nome.substring(1);
         items.add(new Items(id, nome, quantidade));
         System.out.println("Cadastro concluido!"); 
+        
     }
 
     public void findAll(){
