@@ -3,11 +3,13 @@ public class Items {
     int id;
     String nome;
     int quantidade;
+    double mediaVendas;
 
-    public Items(int id, String nome, int quantidade){
+    public Items(int id, String nome, int quantidade, double mediaVendas){
         this.id = id;        
         this.nome = nome;
-        this.quantidade = quantidade;    
+        this.quantidade = quantidade;
+        this.mediaVendas = mediaVendas;    
 
     }
     
@@ -58,6 +60,14 @@ public class Items {
         if (id != other.id)
             return false;
         return true;
+    }
+
+    public double getMediaVendas() {
+        return mediaVendas;
+    }
+
+    public void setMediaVendas(double mediaVendas) {
+        this.mediaVendas = mediaVendas;
     }
     
     
